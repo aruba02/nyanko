@@ -88,12 +88,6 @@ void Setting() {
 // ~~회원가입함수따위는만들지않는다는확고한의지의~~
 void Login() {
     FILE* fp = fopen("users.txt", "a+");
-    if (fp == NULL) {
-        char text[1000] = "users.txt 파일을 열 수 없습니다.";
-        printTextCenter(text);
-        Sleep(1000);
-        return;
-    }
 Choose:
     system("cls");
     char text[1000] = "로그인 하려면 0, 회원가입 하려면 1을 입력하세요.";
@@ -619,7 +613,7 @@ void InGame() {
 
     int money = 5;
     int PlayerCastleHp = 20 + (selectedStage - 1) * 5;
-    int EnemyCastleHp = 20 + (selectedStage - 1) * 15;
+    int EnemyCastleHp = 1 + (selectedStage - 1) * 15;
     int tick = 0;
     int SpawnCool = 0, EnemySpawnCool = 0;
     int GameEnd = 0, win = 0;
@@ -782,7 +776,7 @@ void InGame() {
                 printTextCenter(text);
                 SoundPlay(3);
             }
-            Sleep(2000);
+            Sleep(20000);
             break;
         }
 
