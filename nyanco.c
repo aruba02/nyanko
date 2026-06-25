@@ -1,4 +1,4 @@
-﻿# include <stdio.h>
+# include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
 # include <time.h>
@@ -27,8 +27,6 @@ typedef struct {
 
 HANDLE handle;
 CONSOLE_SCREEN_BUFFER_INFO prev;
-// 보통 전역이 위험하지만 난 그딴거 신경쓰지 않는단다
-// (왜냐고? 이용자가 화면 크기 바꿀때 마다 계속 바꿔줘야 되는데 그거 관리 언제 다하고 있어)
 char player[101];
 int Map[30][120];
 py playData;
@@ -67,13 +65,11 @@ void START() {
     Sleep(1000);
 }
 
-// main함수에 한줄이네 쉽져? 왜 한줄밖에 안되는데 이걸 못만들까나~~?
 int main() {
     return START(), 0;
 }
 
 
-// 설정 함수...... 모든 설정 담당!ㅃ
 void Setting() {
     CONSOLE_CURSOR_INFO CI;
     Gethandle();
@@ -84,8 +80,6 @@ void Setting() {
     SetConsoleCursorInfo(handle, &CI);
 }
 
-// 로그인?
-// ~~회원가입함수따위는만들지않는다는확고한의지의~~
 void Login() {
     FILE* fp = fopen("users.txt", "a+");
 
@@ -249,8 +243,6 @@ void PlayData() {
     fclose(fp);
 }
 
-// ┃ ━ ┗ ┛ ┏ ┓ ┣
-// 채우고
 void mapEdge() {
     memset(Map, ' ', sizeof(Map));
     for (int i = 0; i < 30; i++) {
@@ -303,16 +295,12 @@ void LoadMain() {
     while (1) {
         PrintMap();
         if ((GetAsyncKeyState('1') & 0x8000) || (GetAsyncKeyState(VK_NUMPAD1) & 0x8000)) {
-            // printf("1111\n");
-            //  SoundPlay(4);
-            // SoundPlay(0);
             Sleep(200);
             StageSelect();
             system("cls");
             LoadMain_1();
         }
         else if ((GetAsyncKeyState('2') & 0x8000) || (GetAsyncKeyState(VK_NUMPAD2) & 0x8000)) {
-            // SoundPlay(4);
             Sleep(200);
             Upgrade();
             system("cls");
@@ -442,7 +430,6 @@ void LoadCastle() {
 }
 
 void PrintMap() {
-    // HANDLE con = GetStdHandle(STD_OUTPUT_HANDLE);
     CONSOLE_SCREEN_BUFFER_INFO csbi;
     GetConsoleScreenBufferInfo(handle, &csbi);
     if (prev.srWindow.Left != csbi.srWindow.Left ||
@@ -452,7 +439,6 @@ void PrintMap() {
         system("cls");
     }
     prev = csbi;
-    // getConsoleHandle();
     int conwidth = csbi.srWindow.Right - csbi.srWindow.Left + 1;
     int conheight = csbi.srWindow.Bottom - csbi.srWindow.Top + 1;
     int startx = (conwidth - 120) / 2;
@@ -606,11 +592,8 @@ Cont:
     goto Cont;
 }
 
-// 게임 시작!
 void InGame() {
     SoundPlay(6);
-    // 소환 가능한 x 범위: 26 ~ 92
-    // 배열 0~65를 화면 x좌표 27~92에 대응시켜 사용한다ㄸㄷ
     cat load[MAX_UNIT] = { 0 };
     cat enemy[MAX_UNIT] = { 0 };
 
@@ -658,7 +641,7 @@ void InGame() {
             }
         }
 
-        if (EnemySpawnCool == 0) {  // 적 특수소환        (우라라 발동~~, 응 무덤의 지명자)
+        if (EnemySpawnCool == 0) {
             cat NewEnemy;
             int r = rand() % 3;
             if (selectedStage == 1) {
@@ -812,7 +795,6 @@ void Loading()
     srand(time(NULL));
     CONSOLE_SCREEN_BUFFER_INFO csbi;
     GetConsoleScreenBufferInfo(handle, &csbi);
-    // getConsoleHandle();
     int conwidth = csbi.srWindow.Right - csbi.srWindow.Left + 1;
     int conheight = csbi.srWindow.Bottom - csbi.srWindow.Top + 1;
     int startx = (conwidth - 120) / 2;
