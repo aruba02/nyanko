@@ -88,6 +88,7 @@ void Setting() {
 // ~~회원가입함수따위는만들지않는다는확고한의지의~~
 void Login() {
     FILE* fp = fopen("users.txt", "a+");
+
 Choose:
     system("cls");
     char text[1000] = "로그인 하려면 0, 회원가입 하려면 1을 입력하세요.";
@@ -95,7 +96,8 @@ Choose:
     printf("\t \t \t입력: ");
     int a = -1;
     scanf("%d", &a);
-    fflush(stdin);
+    char ch;
+    while ((ch = getchar()) != '\n' && ch != EOF);
     if (a != 0 && a != 1) {
         system("cls");
         char text[1000] = "잘못된 입력입니다. 다시 입력해주세요.";
@@ -541,7 +543,8 @@ Cont:
 
     int n;
     scanf("%d", &n);
-    fflush(stdin);
+    char ch;
+    while ((ch = getchar()) != '\n' && ch != EOF);
     if (n < 0 || n > 4) {
         WhereText(15, 4, "입력이 잘못되었습니다");
         PrintMap();
