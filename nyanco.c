@@ -286,7 +286,7 @@ void LoadMain_1() {
     WhereText(12, 0, " ||                                                                                                                  ||");
     WhereText(13, 0, " ||                                                 <<<  특문 대전  >>>                                              ||");
     WhereText(14, 0, " ||                                                   <따따따라따다>                                                 ||");
-    WhereText(15, 0, " ||                    ! @ # $ % ^ & * ( ) _ +   ASCII CHARACTER BATTLE   + _ ( ) * & ^ % $ # @ !                    ||");
+    WhereText(15, 0, " ||                                                                                                                  ||");
     WhereText(16, 0, " ||                                                                                                                  ||");
     WhereText(17, 0, " ||                          +--------------------------+      +--------------------------+                          ||");
     WhereText(18, 0, " ||                          |          START           |      |           GROW           |                          ||");
