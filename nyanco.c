@@ -99,7 +99,6 @@ Choose:
         Sleep(1000);
         goto Choose;
     }
-    int ch;
     while ((ch = getchar()) != '\n' && ch != EOF);
     if (a == 0) {
         char ID[1001], PW[1001], rei[1001], rep[1001];
